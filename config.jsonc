@@ -1,0 +1,120 @@
+{
+  "layer": "top",
+  "position": "top",
+  "margin-top": 7,
+  "spacing": 4,
+
+  "modules-left": [
+    "custom/apps",
+    "clock"
+  ],
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+  "modules-right": [
+    "pulseaudio",
+    "network",
+    "battery",
+    "custom/notification"
+  ],
+
+  "custom/apps": {
+    "format": "󰣇",
+    "on-click": "rofi -show drun -theme ~/.config/rofi/launchers/type-6/style-7.rasi",
+    "tooltip": true,
+    "tooltip-format": "App Launcher"
+  },
+
+  "clock": {
+    "interval": 60,
+    "format": " {:%H:%M}",
+    "max-length": 10,
+    "tooltip": true,
+    "tooltip-format": "Clock"
+  },
+
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+    "sort-by-number": true,
+    "all-outputs": true,
+    "active-only": false,
+    "persistent-workspaces": {
+      "*": [1, 2, 3, 4, 5]
+    },
+    "format-icons": {
+      "1": "A",
+      "2": "B",
+      "3": "C",
+      "4": "D",
+      "5": "E",
+      "6": "F",
+      "7": "G",
+      "8" : "H",
+      "9":"J",
+      "10":"K"
+    }
+  },
+
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": " ",
+    "on-click": "pavucontrol -t 3",
+    "on-click-middle": "volumecontrol.sh -o m",
+    "on-scroll-up": "volumecontrol.sh -o i",
+    "on-scroll-down": "volumecontrol.sh -o d",
+    "tooltip-format": "{icon} {desc} // {volume}%",
+    "scroll-step": 5,
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]
+    }
+  },
+
+  "network": {
+    "interval": 1,
+    "format-wifi": "{icon} {essid}",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰤮",
+    "format-icons": ["󰤟", "󰤢", "󰤥", "󰤨"],
+    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+    "on-click": "kitty --class nmtui -e nmtui"
+  },
+
+  "battery": {
+    "interval": 30,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-icons": ["󰁺", "󰁽", "󰁿", "󰂁", "󰁹"]
+  },
+
+  "custom/notification": {
+    "tooltip": true,
+    "format": "<span size='16pt'>{icon}</span>",
+    "format-icons": {
+      "notification": "󱅫",
+      "none": "󰂜",
+      "dnd-notification": "󰂠",
+      "dnd-none": "󰪓",
+      "inhibited-notification": "󰂛",
+      "inhibited-none": "󰪑",
+      "dnd-inhibited-notification": "󰂛",
+      "dnd-inhibited-none": "󰪑"
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  }
+}
