@@ -1,2 +1,2 @@
 # hyprland-dots
-ts is UNFINISHED dotsfile
+My Hyprland dotfiles
